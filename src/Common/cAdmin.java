@@ -5,12 +5,14 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
  */
 public class cAdmin extends cUsuario {
-    public cAdmin(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
-        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser);
+    public cAdmin(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser, Date pFecha){
+        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser, pFecha);
     }
 }

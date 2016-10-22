@@ -5,6 +5,8 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
@@ -15,6 +17,7 @@ public class cUsuario {
     private String Apellido;
     private String Password;
     private String Email;
+    private Date Fecha;
     private Enums.Gerarquia TipoUser;
     /**
      * @return the Nombre
@@ -74,16 +77,24 @@ public class cUsuario {
     public cUsuario(){
         
     }
-    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
+    public cUsuario(int pId,String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser, Date pFecha){
         this.id = pId;
         this.Nombre = pNombre;
         this.Apellido = pApellido;
         this.Email = pEmail;
         this.Password = pPassword;
         this.TipoUser = pTipoUser;
+        this.Fecha = pFecha;
         
     }
-
+    public cUsuario(String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser, Date pFecha){
+        this.Nombre = pNombre;
+        this.Apellido = pApellido;
+        this.Email = pEmail;
+        this.Password = pPassword;
+        this.TipoUser = pTipoUser;
+        this.Fecha = pFecha;
+    }
     /**
      * @return the TipoUser
      */
@@ -110,5 +121,19 @@ public class cUsuario {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the Fecha
+     */
+    public Date getFecha() {
+        return Fecha;
+    }
+
+    /**
+     * @param Fecha the Fecha to set
+     */
+    public void setFecha(Date Fecha) {
+        this.Fecha = Fecha;
     }
 }

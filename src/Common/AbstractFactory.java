@@ -9,11 +9,6 @@ package Common;
  *
  * @author Maxi
  */
-public class Enums {
-    public enum Gerarquia{
-        ADMIN, JUGADOR;
-    }
-    public enum FactorySelection{
-        PERSONAS, JUEGO;
-    }
+public abstract class AbstractFactory {
+    
 }

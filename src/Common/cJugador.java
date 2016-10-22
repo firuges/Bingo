@@ -5,12 +5,14 @@
  */
 package Common;
 
+import java.util.Date;
+
 /**
  *
  * @author Maxi
  */
 public class cJugador extends cUsuario {
-    public cJugador(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser){
-        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser);
+    public cJugador(int pId, String pNombre,String pApellido,String pEmail,String pPassword, Enums.Gerarquia pTipoUser, Date pFecha){
+        super(pId, pNombre,pApellido,pEmail,pPassword, pTipoUser, pFecha);
     }
 }

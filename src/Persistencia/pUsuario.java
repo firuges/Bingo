@@ -45,9 +45,9 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
+               String insertSql="INSERT INTO usuarios(nombre,apellido,email,password,tipouser,fecha)" +
                "VALUES(" + pAdmin.getNombre() + " ,'" + pAdmin.getApellido()+ " ,'" + pAdmin.getEmail()+ " ,'" + pAdmin.getPassword()
-                       + " ,'" + pAdmin.getTipoUser()+ "')";
+                       + " ,'" + pAdmin.getTipoUser()+ " ,'" + pAdmin.getFecha()+ "')";
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
                // ejecuta la sentencia
@@ -67,16 +67,16 @@ public class pUsuario extends pPersistencia {
             // Creo una nueva sentecia para ser ejecutada
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
-               String insertSql="INSERT INTO usarios(tid,tdesc)" +
+               String insertSql="INSERT INTO usarios(nombre,apellido,email,password,tipouser,fecha)" +
                "VALUES(" + pJugador.getNombre() + " ,'" + pJugador.getApellido()+ " ,'" + pJugador.getEmail()+ " ,'" + pJugador.getPassword()
-                       + " ,'" + pJugador.getTipoUser()+ "')";
+                       + " ,'" + pJugador.getTipoUser()+ " ,'" + pJugador.getFecha()+ "')";
                 // esto es solo para mostrar el sql que se va a ejecutar
                System.out.println(insertSql);
                // ejecuta la sentencia
                st.executeUpdate(insertSql);
                super.cerrarConexion();
         }catch(Exception ex){
-            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregarAdmin():" + ex.getMessage());
+            throw new cDatosException("ERROR al Ingresar un Admin /pUsuario/agregarJugador():" + ex.getMessage());
         }
          return true;
       }
@@ -89,12 +89,13 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
                     // arma la sentencia sql
                     String updateSql="UPDATE usuarios SET " +
-                    "unombre='" + unUser.getNombre() + "'" +
-                    "uapellido='" + unUser.getApellido() + "'" +
-                    "uemail='" + unUser.getEmail()+ "'" +
-                    "upassword='" + unUser.getPassword()+ "'"+
-                    "utipouser='" + unUser.getTipoUser()+ "'" +
-                    " WHERE tid=" +  unUser.getId();
+                    "nombre='" + unUser.getNombre() + "'" +
+                    "apellido='" + unUser.getApellido() + "'" +
+                    "email='" + unUser.getEmail()+ "'" +
+                    "password='" + unUser.getPassword()+ "'"+
+                    "tipouser='" + unUser.getTipoUser()+ "'" +
+                    "fecha='" + unUser.getFecha()+ "'" +
+                    " WHERE id=" +  unUser.getId();
                     System.out.println(updateSql);
                     // ejecuta la sentencia
                     st.executeUpdate(updateSql);
@@ -114,7 +115,7 @@ public class pUsuario extends pPersistencia {
             Statement st= super.getDistribuidora().createStatement();
             // arma la sentencia sql
             String deleteSql="DELETE FROM usuarios " +
-                    " WHERE uid=" +  unUser.getId();
+                    " WHERE id=" +  unUser.getId();
             // esto es solo para mostrar el sql que se va a ejecutar
             System.out.println(deleteSql);
             // ejecuta la sentencia
