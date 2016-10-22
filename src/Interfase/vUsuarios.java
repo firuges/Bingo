@@ -8,14 +8,17 @@ package Interfase;
 import Common.ConcreteFactoryPersonas;
 import Common.FactoryMaker;
 import Common.Utilidades;
+import Common.cDatosException;
 import Common.cUsuario;
 import Dominio.dEmpresa;
 import Persistencia.pDatosException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -69,7 +72,7 @@ public class vUsuarios extends javax.swing.JFrame {
         FechaNacido = new com.toedter.calendar.JDateChooser();
         panelListado = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableUsarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,7 +225,7 @@ public class vUsuarios extends javax.swing.JFrame {
         panelListado.setBackground(new java.awt.Color(204, 204, 255));
         panelListado.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Usuarios Registrados"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableUsarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -233,7 +236,7 @@ public class vUsuarios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableUsarios);
 
         javax.swing.GroupLayout panelListadoLayout = new javax.swing.GroupLayout(panelListado);
         panelListado.setLayout(panelListadoLayout);
@@ -427,6 +430,40 @@ public class vUsuarios extends javax.swing.JFrame {
             Logger.getLogger(vUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        LimpiarCampos();
+        this.ChangeBoton(false);
+    }     
+    private void LimpiarCampos(){
+        this.txtId.setText("");
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtEmail.setText("");
+        this.txtPassword.setText("");
+        this.txtPassword2.setText("");
+        this.FechaNacido.cleanup();
+        this.txtNombre.setFocusable(true);
+    }
+    public void cargarUsuarios() throws Exception{
+        ArrayList <cUsuario> losUsuarios = new ArrayList();
+        losUsuarios = laEmpresa.buscarTodosUsuarios();
+        try {
+            //Iterator<cProducto> it = losProductos.iterator();
+            //Capturo el Modelo
+            DefaultTableModel tm = (DefaultTableModel) tableUsarios.getModel();
+            //Vacio las Rows
+            tm.setRowCount(0);
+            //Recorro la Lista
+            for(cUsuario user:losUsuarios){
+                //Agrego una Nueva Row
+                tm.addRow(new Object[]{new Integer(user.getId()), new String(user.getNombre()), new String(Utilidades.FormatearFechaToString(user.getFecha()))});
+                tableUsarios.setModel(tm);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.toString(), "Tipo", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaNacido;
     private javax.swing.JButton btnModificar;
@@ -445,9 +482,9 @@ public class vUsuarios extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblMensaje;
     private javax.swing.JPanel panelListado;
+    private javax.swing.JTable tableUsarios;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
