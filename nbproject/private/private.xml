@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Common/cDatosException.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Dominio/dUsuario.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Persistencia/pPersistencia.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Common/cAdmin.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Common/cJugador.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Common/cUsuario.java</file>
-            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Persistencia/pUsuario.java</file>
+            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Interfase/vPrincipal.java</file>
+            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Interfase/vUsuarios.java</file>
+            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Interfase/ClaseObservador.java</file>
+            <file>file:/C:/Users/Maxi/Documents/Bingo/src/Common/Utilidades.java</file>
         </group>
     </open-files>
 </project-private>
